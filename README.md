@@ -1,14 +1,14 @@
 # dbt-artifact-uploader
 
-Provides a mechanism to upload json artifacts into snowflake for use with unifieDocs Snowflake app.
+Provides a mechanism to upload json artifacts into snowflake for use with Unifiedly Snowflake app.
 
-Prior to using this package ensure there is a source configured as below within your dbt project, this will tell dbt where unifieDocs expects your artifacts to be stored:
+Prior to using this package ensure there is a source configured as below within your dbt project, this will tell dbt where Unifiedly expects your artifacts to be stored:
 ```
 version: 2
 
 sources:
   - name: dbt_artifacts
-    database: unifiedocs  
+    database: unifiedly  
     schema: dbt_artifacts  
     tables:
       - name: artifacts
