@@ -20,28 +20,34 @@ To use this package first run a dbt command such as `dbt docs generate` to ensur
 
 ## Example usage
 
-### Build the project and upload the manifest and run_results to Snowflake
+### Process a dbt command and use Unifiedly Snowflake Application to instantly push metadata to partner applications
 ```
-dbt build && dbt --no-write-json run-operation upload_dbt_artifacts --args '{filenames: [manifest, run_results]}'
-```
-
-### Generate docs and upload the manifest, run_results and catalog to Snowflake
-```
-dbt docs generate && dbt --no-write-json run-operation upload_dbt_artifacts --args '{filenames: [manifest, run_results, catalog]}'
+dbt build && dbt --no-write-json run-operation upload_dbt_artifacts
 ```
 
-### Run the project and upload the manifest and run_results to Snowflake
-```
-dbt run && dbt --no-write-json run-operation upload_dbt_artifacts --args '{filenames: [manifest, run_results]}'
-```
-
-### Tests the project and upload the manifest and run_results to Snowflake
-```
-dbt test && dbt --no-write-json run-operation upload_dbt_artifacts --args '{filenames: [manifest, run_results]}'
-```
-
-### Compile a full manifest and upload it to Snowflake
-
+### Process a dbt command and upload only the manifest artifact, then instantly push metadata to partner applications
 ```
 dbt compile --full-refresh && dbt --no-write-json run-operation upload_dbt_artifacts --args '{filenames: [manifest]}'
+```
+
+### Process a dbt command and upload to Snowflake without syncing
+```
+dbt build && dbt --no-write-json run-operation upload_dbt_artifacts --args '{instant_push: False}'
+```
+
+## Additional Examples
+```
+dbt docs generate && dbt --no-write-json run-operation upload_dbt_artifacts
+```
+
+```
+dbt run && dbt --no-write-json run-operation upload_dbt_artifacts
+```
+
+```
+dbt test && dbt --no-write-json run-operation upload_dbt_artifacts
+```
+
+```
+dbt compile --full-refresh && dbt --no-write-json run-operation upload_dbt_artifacts --args '{filenames: ['manifest.json']}'
 ```

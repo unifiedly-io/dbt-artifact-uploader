@@ -21,10 +21,10 @@ create table if not exists {{ src_dbt_artifacts }} (
 {% endset %}
 
 
-{% do log("Creating Stage: " ~ create_stage_query, info=True) %}
+{% do log("Creating Stage: " ~ create_stage_query, info=False) %}
 {% do run_query(create_stage_query) %}
 
-{% do log("Creating Table: " ~ create_table_query, info=True) %}
+{% do log("Creating Table: " ~ create_table_query, info=False) %}
 {% do run_query(create_table_query) %}
 
 {% endmacro %}
