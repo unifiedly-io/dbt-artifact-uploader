@@ -27,7 +27,7 @@ dbt build && dbt --no-write-json run-operation upload_dbt_artifacts
 
 ### Process a dbt command and upload only the manifest artifact, then instantly push metadata to partner applications
 ```
-dbt compile --full-refresh && dbt --no-write-json run-operation upload_dbt_artifacts --args '{filenames: [manifest]}'
+dbt compile --full-refresh && dbt --no-write-json run-operation upload_dbt_artifacts --args '{filenames: ['manifest.json']}'
 ```
 
 ### Process a dbt command and upload to Snowflake without syncing
