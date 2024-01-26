@@ -1,4 +1,4 @@
-{% macro upload_dbt_artifacts(filenames) %}
+{% macro upload_dbt_artifacts(instant_push=True) %}
 
 {% set src_dbt_artifacts = source('dbt_artifacts', 'artifacts') %}
 
@@ -11,16 +11,35 @@
 {% do log("Clearing existing files from Stage: " ~ remove_query, info=True) %}
 {% do run_query(remove_query) %}
 
-{% for filename in filenames %}
+{# Put all json files into the stage: Returns a tuple of all files that got uploaded #}
+{% set put_query %}
+    put file://target/*.json @{{ src_dbt_artifacts }} auto_compress=true;
+{% endset %}
 
-    {% set file = filename ~ '.json' %}
+{% do log("Uploading " ~ file ~ " to Stage: " ~ put_query, info=True) %}
+{% set results = run_query(put_query) %}
+{% do log("Staged artifacts: " ~ results.columns[0].values(), info=True) %}
+{% set staged_artifacts = results.columns[0].values() %}
 
-    {% set put_query %}
-        put file://target/{{ file }} @{{ src_dbt_artifacts }} auto_compress=true;
-    {% endset %}
+{# Filter the objects that went into the stage to only the default dbt metadata #}
+{% set valid_artifacts = ['manifest.json', 'run_results.json', 'catalog.json']  %}
+{% set filtered_artifacts = []  %}
 
-    {% do log("Uploading " ~ file ~ " to Stage: " ~ put_query, info=True) %}
-    {% do run_query(put_query) %}
+{% for val in staged_artifacts %}
+  {% if val in valid_artifacts %}
+    {{ filtered_artifacts.append(val) }}
+  {% endif %}
+{% endfor %}
+
+{% do log("Filtered artifacts: " ~ filtered_artifacts, info=True) %})
+
+{# Push valid metadata objects into the metadata table #}
+{% for filename in filtered_artifacts %}
+
+    {% set file = filename %}
+    
+    print(filename)
+
 
     {% set copy_query %}
         begin;
@@ -47,4 +66,10 @@
 {% do log("Clearing new files from Stage: " ~ remove_query, info=True) %}
 {% do run_query(remove_query) %}
 
+{% if instant_push %}
+    {% do log("Pushing via Unifiedly", info=True) %}
+    {% set results = run_query("call DATA_BUILD_TOOL_DBT__SELECT_STAR_INTEGRATION_BY_UNIFIEDLY.PUBLIC.PROCESS_ARTIFACTS()")%}
+    {% do log("Unifiedly Response:", info=True) %}
+    {% do print(results.columns[0].values()) %}
+{% endif %}
 {% endmacro %}
