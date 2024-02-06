@@ -26,7 +26,7 @@ with artifacts as (
         select 
             api_data:results as results
         from (
-        select UNIFIEDLY_SELECT_STAR_CONNECTOR_INSTANCE
+        select unifiedly_app_instance
             .public.selectstar_get('data-sources', {}) as api_data
             )
     ), lateral flatten(input=> results) as res
@@ -51,7 +51,7 @@ select
     current_timestamp() as processed_datetime
     , name
     , guid
-    , unifiedly_demo.public.selectstar_post(
+    , unifiedly_app_instance.public.selectstar_post(
         'ingestion/dbt',
         {
             'data_source': guid
