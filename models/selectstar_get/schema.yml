@@ -63,7 +63,7 @@ models:
       - name: api_data
         description: Api Response in a JSON Variant
 
-  - name: unifiedly_selectstar_custom_attributes_retrieve
+  - name: unifiedly_selectstar_data_sources_retrieve
     description: \
       Detailed data about all data sources in Select Star \
       https://api.production.selectstar.com/docs/#tag/data-sources/operation/data_sources_retrieve
