@@ -135,10 +135,10 @@ models:
       - name: api_data
         description: Api Response in a JSON Variant
 
-  - name: unifiedly_selectstar_documents_retrieve
+  - name: unifiedly_selectstar_metrics_retrieve
     description: \
-      Detailed data about all documents in Select Star \
-      https://api.production.selectstar.com/docs/#tag/documents/operation/documents_retrieve
+      Detailed data about all metrics in Select Star \
+      https://api.production.selectstar.com/docs/#tag/metrics/operation/metrics_list
     columns:
       - name: guid
         description: The identifier of the column which the data represents
