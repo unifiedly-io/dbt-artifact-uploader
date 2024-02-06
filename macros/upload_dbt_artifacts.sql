@@ -1,4 +1,4 @@
-{% macro selectstar_ingestion_dbt() %}
+{% macro upload_dbt_artifacts() %}
 -- Gather the dbt artifacts which have been uploaded for each project
 with artifacts as (
     SELECT
