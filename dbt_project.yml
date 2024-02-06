@@ -35,4 +35,5 @@ models:
   unifiedly:
     # Config indicated by + and applies to all files under models/example/
     selectstar_get:
+      +schema: unifiedly
       +materialized: view
