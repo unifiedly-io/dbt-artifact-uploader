@@ -1,0 +1,228 @@
+version: 2
+
+models:
+  - name: unifiedly_selectstar_columns_list
+    description: \
+      A list of all columns in Select Star \
+      https://api.production.selectstar.com/docs/#tag/columns/operation/columns_list
+    columns:
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_columns_retrieve
+    description: \
+      Detailed data about all columns in Select Star \
+      https://api.production.selectstar.com/docs/#tag/columns/operation/columns_retrieve
+    columns:
+      - name: guid
+        description: The identifier of the column which the data represents
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_custom_attribute_values_list
+    description: \
+      A list of all custom attribute values in Select Star \
+      https://api.production.selectstar.com/docs/#tag/custom-attribute-values/operation/custom_attribute_values_list
+    columns:
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_custom_attribute_values_retrieve
+    description: \
+      Detailed data about all custom attribute values in Select Star \
+      https://api.production.selectstar.com/docs/#tag/custom-attribute-values/operation/custom_attribute_values_retrieve
+    columns:
+      - name: guid
+        description: The identifier of the column which the data represents
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_custom_attributes_list
+    description: \
+      A list of all custom attributes in Select Star \
+      https://api.production.selectstar.com/docs/#tag/custom-attributes/operation/custom_attributes_list
+    columns:
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_custom_attributes_retrieve
+    description: \
+      Detailed data about all custom attributes in Select Star \
+      https://api.production.selectstar.com/docs/#tag/custom-attributes/operation/custom_attributes_retrieve
+    columns:
+      - name: guid
+        description: The identifier of the column which the data represents
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_data_sources_list
+    description: \
+      A list of all data sources in Select Star \
+      https://api.production.selectstar.com/docs/#tag/data-sources/operation/data_sources_list
+    columns:
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_custom_attributes_retrieve
+    description: \
+      Detailed data about all data sources in Select Star \
+      https://api.production.selectstar.com/docs/#tag/data-sources/operation/data_sources_retrieve
+    columns:
+      - name: guid
+        description: The identifier of the column which the data represents
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_databases_list
+    description: \
+      A list of all databases in Select Star \
+      https://api.production.selectstar.com/docs/#tag/databases/operation/databases_list
+    columns:
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_databases_retrieve
+    description: \
+      Detailed data about all databases in Select Star \
+      https://api.production.selectstar.com/docs/#tag/databases/operation/databases_retrieve
+    columns:
+      - name: guid
+        description: The identifier of the column which the data represents
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_dbt_warehouse_link_list
+    description: \
+      A list of all dbt warehouse links in Select Star \
+      https://api.production.selectstar.com/docs/#tag/dbt/operation/dbt_warehouse_link_list
+    columns:
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_dbt_warehouse_link_retrieve
+    description: \
+      Detailed data about all dbt watehouse links in Select Star \
+      https://api.production.selectstar.com/docs/#tag/dbt/operation/dbt_warehouse_link_retrieve
+    columns:
+      - name: guid
+        description: The identifier of the column which the data represents
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_documents_list
+    description: \
+      A list of all documents in Select Star \
+      https://api.production.selectstar.com/docs/#tag/documents/operation/documents_list
+    columns:
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_documents_retrieve
+    description: \
+      Detailed data about all documents in Select Star \
+      https://api.production.selectstar.com/docs/#tag/documents/operation/documents_retrieve
+    columns:
+      - name: guid
+        description: The identifier of the column which the data represents
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_metrics_list
+    description: \
+      A list of all metrics in Select Star \
+      https://api.production.selectstar.com/docs/#tag/documents/operation/documents_list
+    columns:
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_documents_retrieve
+    description: \
+      Detailed data about all documents in Select Star \
+      https://api.production.selectstar.com/docs/#tag/documents/operation/documents_retrieve
+    columns:
+      - name: guid
+        description: The identifier of the column which the data represents
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_schemas_list
+    description: \
+      A list of all schemas in Select Star \
+      https://api.production.selectstar.com/docs/#tag/schemas/operation/schemas_list
+    columns:
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_schemas_retrieve
+    description: \
+      Detailed data about all schemas in Select Star \
+      https://api.production.selectstar.com/docs/#tag/schemas/operation/schemas_retrieve
+    columns:
+      - name: guid
+        description: The identifier of the column which the data represents
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_tables_frequent_users_retrieve
+    description: \
+      Detailed data about all tables frequent users in Select Star \
+      https://api.production.selectstar.com/docs/#tag/tables/operation/tables_frequent_users_retrieve
+    columns:
+      - name: guid
+        description: The identifier of the column which the data represents
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_tables_list
+    description: \
+      A list of all tables in Select Star \
+      https://api.production.selectstar.com/docs/#tag/tables/operation/tables_list
+    columns:
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_tables_retrieve
+    description: \
+      Detailed data about all tables in Select Star \
+      https://api.production.selectstar.com/docs/#tag/tables/operation/tables_retrieve
+    columns:
+      - name: guid
+        description: The identifier of the column which the data represents
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_teams_list
+    description: \
+      A list of all teams in Select Star \
+      https://api.production.selectstar.com/docs/#tag/teams/operation/teams_list
+    columns:
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_teams_retrieve
+    description: \
+      Detailed data about all teams in Select Star \
+      https://api.production.selectstar.com/docs/#tag/teams/operation/teams_retrieve
+    columns:
+      - name: guid
+        description: The identifier of the column which the data represents
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_terms_list
+    description: \
+      A list of all terms in Select Star \
+      https://api.production.selectstar.com/docs/#tag/terms/operation/terms_list
+    columns:
+      - name: api_data
+        description: Api Response in a JSON Variant
+
+  - name: unifiedly_selectstar_terms_retrieve
+    description: \
+      Detailed data about all terms in Select Star \
+      https://api.production.selectstar.com/docs/#tag/terms/operation/terms_retrieve
+    columns:
+      - name: guid
+        description: The identifier of the column which the data represents
+      - name: api_data
+        description: Api Response in a JSON Variant
