@@ -72,7 +72,7 @@
     {% do log("Metadata pushed to Snowflake", info=True) %})
     {% if instant_push %}
         {% do log("Pushing via Unifiedly", info=True) %}
-        {% set results = run_query(selectstar_ingestion_dbt()")%}
+        {% set results = run_query(selectstar_ingestion_dbt()) %}
         {% do log("Unifiedly Response:", info=True) %}
         {% do print(results.columns.values()) %}
     {% endif %}
