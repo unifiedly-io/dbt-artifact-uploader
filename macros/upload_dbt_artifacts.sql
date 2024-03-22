@@ -1,4 +1,4 @@
-{% macro upload_dbt_artifacts(instant_push=True, filenames=[]) %}
+{% macro upload_dbt_artifacts(filenames=[], meta={}) %}
 
 {% set src_dbt_artifacts = source('dbt_artifacts', 'artifacts') %}
 
@@ -54,6 +54,7 @@
                 (
                     select
                     '{{ project_name }}' as project_name,
+                    parse_json('{{ meta }}') as meta,
                     $1 as data,
                     $1:metadata:generated_at::timestamp_ntz as generated_at,
                     metadata$filename as path,
@@ -70,12 +71,6 @@
 
     {% endfor %}
     {% do log("Metadata pushed to Snowflake", info=True) %})
-    {% if instant_push %}
-        {% do log("Pushing via Unifiedly", info=True) %}
-        {% set results = run_query(selectstar_ingestion_dbt()) %}
-        {% do log("Unifiedly Response:", info=True) %}
-        {% do print(results.columns.values()) %}
-    {% endif %}
 
 {% else %}
 

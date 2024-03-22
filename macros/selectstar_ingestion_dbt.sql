@@ -68,4 +68,5 @@ select
         else FALSE
     end as update_successful
     from prepped_data
+
 {% endmacro %}

@@ -12,6 +12,7 @@ file_format = ( type =  json );
 {% set create_table_query %}
 create table if not exists {{ src_dbt_artifacts }} (
     project_name varchar,
+    meta variant,
     data variant,
     generated_at timestamp,
     path string,
