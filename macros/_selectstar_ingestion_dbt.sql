@@ -47,26 +47,30 @@ with artifacts as (
 -- The API returns the data source GUID if it was successful so we add a check
 -- so that we can validate the response by parsing the return and comparing to
 -- the guid column
-select
-    current_timestamp() as processed_datetime
-    , name
-    , guid
-    , unifiedly.public.selectstar_post(
-        'ingestion/dbt',
-        {
-            'data_source': guid
-        },
-        {},
-        {
-            'manifest_file': to_json(manifest),
-            'catalog_file': to_json(catalog),
-            'run_results_file': to_json(run_results)
-        }
-    ) as api_response
-    , case
-        when api_response:data_source = guid then TRUE
-        else FALSE
-    end as update_successful
-    from prepped_data
+, result_set as (
+    select
+        current_timestamp() as processed_datetime
+        , name
+        , guid
+        , unifiedly.public.selectstar_post(
+            'ingestion/dbt',
+            {
+                'data_source': guid
+            },
+            {},
+            {
+                'manifest_file': to_json(manifest),
+                'catalog_file': to_json(catalog),
+                'run_results_file': to_json(run_results)
+            }
+        ) as api_response
+        , case
+            when api_response:data_source = guid then TRUE
+            else FALSE
+        end as update_successful
+        from prepped_data
+)
+select update_successful
+from result_set
 
 {% endmacro %}
