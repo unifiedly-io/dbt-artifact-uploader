@@ -54,7 +54,7 @@
                 (
                     select
                     '{{ project_name }}' as project_name,
-                    '{{ meta }}' as meta,
+                    parse_json('{{ meta }}') as meta,
                     $1 as data,
                     $1:metadata:generated_at::timestamp_ntz as generated_at,
                     metadata$filename as path,
