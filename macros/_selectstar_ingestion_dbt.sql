@@ -65,12 +65,12 @@ with artifacts as (
             }
         ) as api_response
         , case
-            when api_response:data_source = guid then TRUE
-            else FALSE
-        end as update_successful
+            when api_response:data_source = guid then "Success"
+            else api_response
+        end as update_status
         from prepped_data
 )
-select update_successful
+select update_status
 from result_set
 
 {% endmacro %}
