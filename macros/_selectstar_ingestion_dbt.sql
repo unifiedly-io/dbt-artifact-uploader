@@ -65,7 +65,7 @@ with artifacts as (
             }
         ) as api_response
         , case
-            when api_response:data_source = guid then "Success"
+            when api_response:data_source = guid then 'Success'
             else api_response
         end as update_status
         from prepped_data
