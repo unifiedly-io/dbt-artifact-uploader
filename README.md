@@ -1,10 +1,10 @@
 # unifiedly-dbt
 
-This dbt package works with the commercial product Unifiedly to make API calls within Snowflake and dbt easy and accessible.
+This dbt package works with the commercial product [Unifiedly](unifiedly.io) to make API calls within Snowflake and dbt easy and accessible.
 
-Unifiedly is a Snowflake Native App and can be found on the Snowflake App Marketplace.
+Unifiedly is a Snowflake Native App and can be found on the [Snowflake App Marketplace](https://app.snowflake.com/marketplace/listing/GZSUZHTVEF/unifiedly-unifiedly-api-connector).
 
-This package will not work unless the app has been installed and configured.
+Some features of this package will not work unless the app has been installed and configured.
 
 ## Example API usage
 
@@ -26,7 +26,7 @@ We welcome any additions with new models, suggestions for more endpoints etc.
 
 ## Other features
 
-In addition to making API calls this package also provides a mechanism to upload json artifacts into snowflake for use with Unifiedly Snowflake app.
+In addition to making API calls this package also provides a mechanism to upload json artifacts into snowflake for querying and use with Unifiedly Snowflake app.
 
 Prior to using this package ensure there is a source configured as below within your dbt project, this will tell dbt where Unifiedly expects your artifacts to be stored:
 ```
@@ -34,7 +34,7 @@ version: 2
 
 sources:
   - name: dbt_artifacts
-    database: unifiedly  
+    database: artifacts
     schema: dbt_artifacts  
     tables:
       - name: artifacts
@@ -51,14 +51,19 @@ To use this package first run a dbt command such as `dbt docs generate` to ensur
 dbt build && dbt --no-write-json run-operation upload_dbt_artifacts
 ```
 
-### Process a dbt command and upload only the manifest artifact, then instantly push metadata to partner applications
+### Process a dbt command and upload only the manifest artifact
 ```
 dbt compile --full-refresh && dbt --no-write-json run-operation upload_dbt_artifacts --args '{filenames: ['manifest.json']}'
 ```
 
-### Process a dbt command and upload to Snowflake without syncing
+### Arbitrary metadata in the form of a dictionary can be included with your artifacts to help further analysis
 ```
-dbt build && dbt --no-write-json run-operation upload_dbt_artifacts --args '{instant_push: False}'
+dbt compile --full-refresh && dbt --no-write-json run-operation upload_dbt_artifacts --args '{filenames: ['manifest.json'], meta: "{\"arbitrarily\": {\"nested\": \"metadata\"}}"}'
+```
+
+### Combine uploaded artifacts with pushing metadata to partner applications API's
+```
+dbt compile --full-refresh && dbt --no-write-json run-operation upload_dbt_artifacts --args '{filenames: ['manifest.json'], meta: "{\"arbitrarily\": {\"nested\": \"metadata\"}}"}' && dbt run-operation selectstar_ingestion_dbt
 ```
 
 ## Additional Examples
